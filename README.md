@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌿 Organic Food Store — Flask + MongoDB Atlas
 
 A full-stack organic food e-commerce web app built with Flask and MongoDB Atlas.
@@ -107,3 +108,6 @@ http://127.0.0.1:5000
 6. `utils/db_connection.py` — file was missing entirely (models couldn't import it)
 7. `register()` — was storing users in memory list (`users = []`), lost on restart
 8. `order_success.html` — `<a href="products.html">` was a file path, not a Flask URL
+=======
+# orgonic_food_store
+>>>>>>> dd3934aeab841fb8a4e1923733df2e7a77a9af47
