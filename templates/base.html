@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 Organic Food Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold fs-4" href="/">🌿 Organic Store</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Search -->
+      <form class="d-flex mx-auto" method="GET" action="{{ url_for('search') }}" style="width:40%">
+        <input class="form-control me-2 rounded-pill" type="search" name="query" placeholder="🔍 Search products...">
+        <button class="btn btn-light rounded-pill px-3" type="submit">Search</button>
+      </form>
+
+      <!-- Nav Links -->
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="bi bi-house"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('products') }}"><i class="bi bi-grid"></i> Products</a></li>
+        <li class="nav-item">
+          <a class="nav-link position-relative" href="{{ url_for('cart') }}">
+            <i class="bi bi-cart3"></i> Cart
+            {% if session.cart %}
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ session.cart | length }}
+            </span>
+            {% endif %}
+          </a>
+        </li>
+        {% if session.user %}
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="bi bi-person-circle"></i> {{ session.user }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}"><i class="bi bi-shield-lock"></i> Admin</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+        <li class="nav-item"><a class="btn btn-light btn-sm rounded-pill px-3" href="{{ url_for('register') }}">Register</a></li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<!-- FLASH MESSAGES -->
+<div class="container mt-3">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container-fluid px-4 mt-2">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+  <div class="container">
+    <p class="mb-1 fw-bold">🌿 Organic Food Store</p>
+    <p class="small text-muted">© 2025 Fresh & Healthy Living | All Rights Reserved</p>
+    <div class="mt-2">
+      <a href="/" class="text-muted me-3 small">Home</a>
+      <a href="/products" class="text-muted me-3 small">Products</a>
+      <a href="/cart" class="text-muted me-3 small">Cart</a>
+      <a href="/admin" class="text-muted small">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

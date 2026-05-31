@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero-section text-white text-center d-flex align-items-center justify-content-center">
+  <div>
+    <h1 class="display-3 fw-bold">🌿 Fresh Organic Products</h1>
+    <p class="lead fs-5 mt-3">Farm to Table — Pure, Natural & Healthy</p>
+    <a href="{{ url_for('products') }}" class="btn btn-light btn-lg rounded-pill px-5 mt-3 fw-bold shadow">
+      Shop Now →
+    </a>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="container my-5">
+  <h2 class="text-center fw-bold mb-4 text-success">Our Categories</h2>
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-6 col-md-2">
+      <a href="/products" class="text-decoration-none">
+        <div class="card category-card text-center shadow-sm border-0 p-3">
+          <div class="display-4">🌾</div>
+          <p class="mt-2 fw-semibold text-dark mb-0">Rice</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-2">
+      <a href="/products" class="text-decoration-none">
+        <div class="card category-card text-center shadow-sm border-0 p-3">
+          <div class="display-4">🥕</div>
+          <p class="mt-2 fw-semibold text-dark mb-0">Vegetables</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-2">
+      <a href="/products" class="text-decoration-none">
+        <div class="card category-card text-center shadow-sm border-0 p-3">
+          <div class="display-4">🍯</div>
+          <p class="mt-2 fw-semibold text-dark mb-0">Honey</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-2">
+      <a href="/products" class="text-decoration-none">
+        <div class="card category-card text-center shadow-sm border-0 p-3">
+          <div class="display-4">🥜</div>
+          <p class="mt-2 fw-semibold text-dark mb-0">Dry Fruits</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-2">
+      <a href="/products" class="text-decoration-none">
+        <div class="card category-card text-center shadow-sm border-0 p-3">
+          <div class="display-4">🫙</div>
+          <p class="mt-2 fw-semibold text-dark mb-0">Oils</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-2">
+      <a href="/products" class="text-decoration-none">
+        <div class="card category-card text-center shadow-sm border-0 p-3">
+          <div class="display-4">🌶️</div>
+          <p class="mt-2 fw-semibold text-dark mb-0">Spices</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="bg-success bg-opacity-10 py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold text-success mb-4">Why Choose Us?</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 h-100">
+          <div class="display-5">🌱</div>
+          <h5 class="mt-3 fw-bold">100% Organic</h5>
+          <p class="text-muted small">No pesticides, no chemicals. Pure natural products.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 h-100">
+          <div class="display-5">🚚</div>
+          <h5 class="mt-3 fw-bold">Free Delivery</h5>
+          <p class="text-muted small">Free delivery on orders above ₹499.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 h-100">
+          <div class="display-5">💯</div>
+          <h5 class="mt-3 fw-bold">Quality Assured</h5>
+          <p class="text-muted small">Each product is quality tested before dispatch.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 h-100">
+          <div class="display-5">🔒</div>
+          <h5 class="mt-3 fw-bold">Secure Payment</h5>
+          <p class="text-muted small">Safe and secure Cash on Delivery available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

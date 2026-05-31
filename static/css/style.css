@@ -1,0 +1,89 @@
+/* ===== GLOBAL ===== */
+* { box-sizing: border-box; }
+
+body {
+    background-color: #f4f8f2;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+/* ===== HERO ===== */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('/static/images/organic-bg.jpg') center/cover no-repeat;
+    min-height: 500px;
+    color: white;
+}
+
+/* ===== CATEGORY CARDS ===== */
+.category-card {
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12) !important;
+}
+
+/* ===== PRODUCT CARDS ===== */
+.product-card {
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12) !important;
+}
+.product-img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+.product-img-placeholder {
+    height: 200px;
+}
+
+/* ===== PRICE BOX ===== */
+.price-box {
+    background: #f0fff4;
+    border: 1px solid #c3e6cb;
+}
+
+/* ===== OFFER BOX ===== */
+.offer-box {
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+}
+
+/* ===== NAVBAR ===== */
+.navbar { padding: 12px 0; }
+.navbar .nav-link { font-weight: 500; }
+.navbar .nav-link:hover { color: #c8e6c9 !important; }
+
+/* ===== BADGES ===== */
+.bg-success-subtle { background-color: #d4edda !important; }
+
+/* ===== BUTTONS ===== */
+.btn-warning { color: #000; }
+.btn-warning:hover { background-color: #e0a800; }
+
+/* ===== TABLE ===== */
+.table th { font-weight: 600; font-size: 0.875rem; color: #555; }
+
+/* ===== FOOTER ===== */
+footer a { text-decoration: none; }
+footer a:hover { color: #fff !important; }
+
+/* ===== FORMS ===== */
+.form-control:focus, .form-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40,167,69,.25);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-section { min-height: 320px; }
+    .product-img { height: 160px; }
+}

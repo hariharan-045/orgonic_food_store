@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="fw-bold text-success my-4"><i class="bi bi-cart3"></i> Your Cart</h2>
+
+{% if cart %}
+
+<div class="row g-4">
+  <!-- Cart Items -->
+  <div class="col-md-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead class="table-success">
+            <tr>
+              <th class="ps-4">Product</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in cart %}
+            <tr class="align-middle">
+              <td class="ps-4">
+                <div class="d-flex align-items-center gap-3">
+                  {% if item.image %}
+                    <img src="{{ item.image }}" width="60" height="60"
+                         class="rounded-3 object-fit-cover border"
+                         onerror="this.src='https://via.placeholder.com/60?text=🌿'">
+                  {% endif %}
+                  <span class="fw-semibold">{{ item.name }}</span>
+                </div>
+              </td>
+              <td>₹{{ item.price }}</td>
+              <td>{{ item.get('qty', 1) }}</td>
+              <td class="fw-bold text-success">₹{{ item.price * item.get('qty', 1) }}</td>
+              <td>
+                <a href="{{ url_for('remove_from_cart', product_id=item.id) }}"
+                   class="btn btn-sm btn-outline-danger rounded-pill">
+                  <i class="bi bi-trash"></i>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-3">
+      <a href="{{ url_for('products') }}" class="btn btn-outline-success rounded-pill px-4">
+        ← Continue Shopping
+      </a>
+      <a href="{{ url_for('clear_cart') }}" class="btn btn-outline-danger rounded-pill px-4">
+        <i class="bi bi-trash"></i> Clear Cart
+      </a>
+    </div>
+  </div>
+
+  <!-- Order Summary -->
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body">
+        <h5 class="fw-bold mb-4">Order Summary</h5>
+
+        {% for item in cart %}
+        <div class="d-flex justify-content-between small text-muted mb-2">
+          <span>{{ item.name }} × {{ item.get('qty',1) }}</span>
+          <span>₹{{ item.price * item.get('qty',1) }}</span>
+        </div>
+        {% endfor %}
+
+        <hr>
+        <div class="d-flex justify-content-between fw-bold fs-5">
+          <span>Total</span>
+          <span class="text-success">₹{{ total }}</span>
+        </div>
+        {% if total >= 499 %}
+        <p class="small text-success mt-2">🚚 Free delivery applied!</p>
+        {% else %}
+        <p class="small text-muted mt-2">Add ₹{{ 499 - total }} more for free delivery</p>
+        {% endif %}
+
+        <a href="{{ url_for('checkout') }}" class="btn btn-success w-100 mt-3 rounded-pill fw-bold">
+          Proceed to Checkout →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div class="text-center py-5">
+  <div style="font-size:5rem">🛒</div>
+  <h4 class="text-muted mt-3">Your cart is empty</h4>
+  <a href="{{ url_for('products') }}" class="btn btn-success rounded-pill px-4 mt-3">Start Shopping</a>
+</div>
+{% endif %}
+
+{% endblock %}

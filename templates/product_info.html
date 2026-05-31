@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row my-5 g-5">
+  <div class="col-md-5">
+    <img src="{{ product.image }}" class="img-fluid rounded-4 shadow" alt="{{ product.name }}"
+         style="width:100%;max-height:400px;object-fit:cover">
+  </div>
+  <div class="col-md-7">
+    <h1 class="fw-bold">{{ product.name }}</h1>
+    <p class="text-muted">{{ product.description }}</p>
+    <div class="price-box my-4 p-4 rounded-4 shadow-sm">
+      <h2 class="fw-bold text-success">₹{{ product.price }}</h2>
+      <p class="text-muted mb-0">Per unit — Fresh & Organic</p>
+    </div>
+    <a href="{{ url_for('products') }}" class="btn btn-success rounded-pill px-4">← Back to Products</a>
+  </div>
+</div>
+
+{% endblock %}

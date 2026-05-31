@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row my-5 g-5">
+
+  <!-- Product Image -->
+  <div class="col-md-5">
+    {% if product.image %}
+      <img src="{{ product.image }}" class="img-fluid rounded-4 shadow" alt="{{ product.name }}"
+           onerror="this.src='https://via.placeholder.com/450x350?text=No+Image'" style="width:100%;max-height:400px;object-fit:cover">
+    {% else %}
+      <div class="d-flex align-items-center justify-content-center bg-light rounded-4" style="height:350px;font-size:6rem">🌿</div>
+    {% endif %}
+  </div>
+
+  <!-- Product Info -->
+  <div class="col-md-7">
+    <span class="badge bg-success mb-2">{{ product.category }}</span>
+    <h1 class="fw-bold">{{ product.name }}</h1>
+    <p class="text-muted">{{ product.get('description', 'Fresh organic product sourced directly from farms.') }}</p>
+
+    <div class="price-box my-4 p-4 rounded-4 shadow-sm">
+      <h2 class="fw-bold text-success">₹{{ product.price }}</h2>
+      <p class="text-muted mb-0">Per unit &nbsp;|&nbsp; Stock: {{ product.get('quantity', 0) }} units</p>
+    </div>
+
+    <div class="d-flex gap-3">
+      <a href="{{ url_for('add_to_cart', product_id=product._id) }}"
+         class="btn btn-warning btn-lg fw-bold px-4 rounded-pill">
+        <i class="bi bi-cart-plus"></i> Add to Cart
+      </a>
+      <a href="{{ url_for('products') }}" class="btn btn-outline-secondary btn-lg rounded-pill px-4">
+        ← Back
+      </a>
+    </div>
+
+    <!-- Offer Box -->
+    <div class="offer-box mt-4 p-3 rounded-3">
+      <p class="mb-1 fw-semibold">🎁 Available Offers</p>
+      <p class="mb-1 small">✅ Free delivery on orders above ₹499</p>
+      <p class="mb-0 small">✅ 100% Organic — No pesticides, No chemicals</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Info Sections -->
+<div class="row g-4 my-2">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm p-4 h-100">
+      <h5 class="fw-bold text-success">✅ Advantages</h5>
+      <ul class="mt-2 text-muted small">
+        <li>Rich in essential vitamins and minerals</li>
+        <li>Improves blood circulation</li>
+        <li>Supports liver detoxification</li>
+        <li>Enhances stamina and energy levels</li>
+        <li>Good for heart health</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm p-4 h-100">
+      <h5 class="fw-bold text-danger">⚠️ Precautions</h5>
+      <ul class="mt-2 text-muted small">
+        <li>Consume in moderation</li>
+        <li>Consult doctor if you have allergies</li>
+        <li>Store in a cool, dry place</li>
+        <li>Keep away from direct sunlight</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm p-4 h-100">
+      <h5 class="fw-bold text-primary">👥 Recommended For</h5>
+      <ul class="mt-2 text-muted small">
+        <li>People seeking natural nutrition</li>
+        <li>Fitness enthusiasts and athletes</li>
+        <li>Families wanting clean eating</li>
+        <li>Individuals on detox plans</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
