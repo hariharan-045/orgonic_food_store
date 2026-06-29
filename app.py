@@ -6,6 +6,7 @@ from models.user import create_user, validate_user
 from models.product import get_all_products, get_product_by_id, add_product, delete_product, search_products
 from models.order import create_order
 from seed_db import seed
+import os
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = Config.SECRET_KEY
@@ -270,4 +271,5 @@ def profile():
 #  RUN
 # ─────────────────────────────────────────────
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
